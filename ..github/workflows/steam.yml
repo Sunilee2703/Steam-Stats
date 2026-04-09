@@ -1,0 +1,15 @@
+name: Steam Stats
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 0"
+jobs:
+  steam-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate Steam Stats
+        uses: nicconike/steam-stats@master
+        with:
+          STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
+          STEAM_ID: ${{ vars.STEAM_ID }}
+          STEAM_CUSTOM_ID: ${{ vars.STEAM_CUSTOM_ID }}
